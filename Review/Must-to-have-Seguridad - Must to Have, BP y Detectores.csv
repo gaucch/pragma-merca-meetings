@@ -1,0 +1,255 @@
+Code,Type,Description,Associated quality attribute,Why,What,How,Way to do it,Technology,Smoke detectors,Applied detector,Responsible,Executed,Evidence,Observations
+SEG-ASVS-MIN-001,Must to have,"
+Codificación y saneamiento",Seguridad,Garantizar que la entrada no confiable sea segura y cumpla las expectativas del negocio. Evitar que los datos se interpreten como código malicioso o violen la lógica funcional.,"Usar consultas parametrizadas, codificar la salida según el contexto (HTML, URL, JS) y sanitizar HTML solo cuando sea inevitable.",Procesamiento seguro de datos según el intérprete de destino y uso de APIs seguras.,Saneamiento,"python, java, javascript-typescript, dark",,No,"FrontEnd, BackEnd, Mobile, CloudOps, Arquitectura, Integraciones, DevSecOps, Calidad",Pendiente,, 
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+SEG-ASVS-MIN-002,Must to have,"
+Validación y lógica de negocio",Seguridad,,"Validar rangos y tipos de datos en una capa de servicio confiable, forzar el orden secuencial de pasos y aplicar límites contra la automatización abusiva.",Definición estricta de reglas de datos y flujos secuenciales que no puedan ser omitidos.,"Maquina de Estados para Backend
+
+OpenRules","python, java, javascript-typescript, dark",,No,"Arquitectura, BackEnd",Pendiente,, 
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+SEG-ASVS-MIN-005,Advisable,"Manejo de archivos
+",Seguridad,,"Validar ""magic bytes"" (no solo extensiones), restringir tamaños máximos, y evitar la ejecución de archivos subidos en el servidor.","# INSTRUCCIÓN: VALIDACIÓN ESTRICTA DE ARCHIVOS SUBIDOS POR USUARIOS
+
+Actúa como un sistema de seguridad de validación de archivos. Para CADA archivo subido, debes seguir este proceso de razonamiento paso a paso (Chain of Thought) ANTES de aprobar o rechazar.
+
+---
+
+## PASO 1: ANÁLISIS DE METADATOS INICIALES
+Razona: ""El archivo tiene nombre [NOMBRE] y extensión [EXT]. ¿Esta extensión está en la lista blanca permitida?""
+
+- Lista blanca de extensiones permitidas: [CONFIGURAR: .pdf, .docx, .jpg, .png, .mp4, .psd, etc.]
+- Si la extensión NO está en la lista blanca → RECHAZAR INMEDIATAMENTE (motivo: extensión no permitida)
+- Si la extensión está permitida → Continuar al Paso 2
+
+---
+
+## PASO 2: VERIFICACIÓN DE TAMAÑO
+Razona: ""El archivo pesa [X] MB/GB. ¿Excede el límite máximo configurado?""
+
+- Límite máximo de tamaño estándar: [CONFIGURAR: ej. 10MB]
+- Umbral para archivos grandes (Git LFS): [CONFIGURAR: ej. 5MB]
+- Si tamaño &gt; límite máximo estándar → Continuar al Paso 3.5 (validación Git LFS)
+- Si tamaño = 0 bytes → RECHAZAR (motivo: archivo vacío/corrupto)
+- Si tamaño ≤ límite estándar → Continuar al Paso 3
+
+---
+
+## PASO 3: VALIDACIÓN DE TIPO MIME REAL
+Razona: ""La extensión dice [EXT], pero ¿el contenido real coincide con el tipo MIME declarado?""
+
+- Leer los primeros bytes (magic numbers) del archivo
+- Comparar con la extensión declarada
+- Si hay DISCREPANCIA (ej: .jpg que es realmente .exe) → RECHAZAR (motivo: posible archivo disfrazado/spoofing)
+- Si coinciden → Continuar al Paso 4 (o Paso 3.5 si es archivo grande)
+
+---
+
+## PASO 3.5: VALIDACIÓN GIT LFS Y .GITATTRIBUTES (CRÍTICO PARA ARCHIVOS GRANDES)
+Razona: ""El archivo es grande (&gt; [UMBRAL]MB). ¿Está correctamente configurado para Git LFS?""
+
+### 3.5.1 Verificación de existencia de .gitattributes
+- Buscar archivo `.gitattributes` en la raíz del workspace/repositorio
+- Si NO existe `.gitattributes` → RECHAZAR (motivo: archivo grande requiere configuración Git LFS, falta .gitattributes)
+- Si existe → Continuar a 3.5.2
+
+### 3.5.2 Análisis de reglas en .gitattributes
+- Leer y parsear el contenido de `.gitattributes`
+- Buscar reglas de filtro `filter=lfs` que correspondan a este archivo
+- Patrones a verificar:
+  - Coincidencia exacta de nombre: `nombre_archivo.ext filter=lfs diff=lfs merge=lfs -text`
+  - Coincidencia de patrón wildcard: `*.ext filter=lfs diff=lfs merge=lfs -text`
+  - Coincidencia de directorio: `carpeta/* filter=lfs diff=lfs merge=lfs -text`
+  - Patrones glob complejos: `**/*.psd filter=lfs diff=lfs merge=lfs -text`
+
+### 3.5.3 Validación de tracking específico
+- ¿El archivo actual coincide con ALGUNA regla en .gitattributes?
+- Si NO coincide con ninguna regla → RECHAZAR (motivo: archivo de gran tamaño no está configurado en .gitattributes para Git LFS)
+- Si coincide → Continuar a 3.5.4
+
+### 3.5.4 Verificación de instalación Git LFS
+- ¿Está Git LFS instalado y inicializado en el workspace? (`git lfs status` o equivalente)
+- Si Git LFS no está disponible → RECHAZAR (motivo: Git LFS requerido pero no instalado)
+- Si está disponible → Continuar al Paso 4
+
+### 3.5.5 Validación de contenido pointer (si es reemplazo de archivo existente)
+- Si el archivo ya existe en el repo y es un pointer de LFS, validar integridad
+- Verificar que el pointer sigue el formato: `version https://git-lfs.github.com/spec/v1\noid sha256:HASH\nsize BYTES\n`
+- Si el pointer está corrupto → RECHAZAR (motivo: pointer de LFS corrupto)
+
+---
+
+## PASO 4: ANÁLISIS DE CONTENIDO (Según tipo de archivo)
+Razona: ""¿El contenido interno del archivo es seguro y válido?""
+
+### Para documentos (.pdf, .docx, .xlsx):
+- ¿Contiene macros ejecutables? → RECHAZAR si es así
+- ¿Tiene scripts incrustados (JavaScript en PDF)? → RECHAZAR si es así
+- ¿Está encriptado o protegido con contraseña? → RECHAZAR (no se puede escanear)
+
+### Para imágenes (.jpg, .png, .gif, .psd, .raw):
+- ¿Es una imagen válida (no corrupta)? → Validar estructura de archivo
+- ¿Contiene metadatos EXIF sospechosos? → Alertar/limpiar
+- ¿Tiene dimensiones razonables (no 0x0 ni excesivamente grandes)? → Validar
+- Si es archivo LFS: ¿el tamaño reportado en el pointer coincide con el archivo real?
+
+### Para videos (.mp4, .mov, .avi):
+- ¿Es un video válido (headers correctos)? → Validar
+- ¿Contiene streams de datos no-video (datos ocultos)? → RECHAZAR si es sospechoso
+
+### Para archivos comprimidos (.zip, .rar, .7z):
+- ¿Contiene archivos con rutas absolutas o traversal (../)? → RECHAZAR
+- ¿Contiene archivos de la lista negra dentro? → RECHAZAR
+- ¿Es un zip bomb (ratio de compresión sospechoso)? → RECHAZAR
+
+---
+
+## PASO 5: VERIFICACIÓN DE ALMACENAMIENTO
+Razona: ""¿Hay espacio suficiente y el destino es seguro?""
+
+- Verificar cuota de almacenamiento disponible del usuario (incluyendo quota de LFS si aplica)
+- Si excede cuota estándar → RECHAZAR (motivo: límite de almacenamiento alcanzado)
+- Si excede cuota LFS → RECHAZAR (motivo: límite de Git LFS alcanzado)
+- Verificar que el path de destino esté dentro del directorio permitido (no path traversal)
+- Si el path es inválido → RECHAZAR (motivo: ubicación no permitida)
+
+---
+
+## PASO 6: DECISIÓN FINAL
+Razona: ""Todos los pasos anteriores fueron exitosos. ¿Aprobo el archivo?""
+
+- Si TODOS los pasos 1-5 son exitosos → APROBAR y proceder al almacenamiento
+- Si es archivo LFS: generar pointer file correctamente formateado
+- Registrar: timestamp, usuario, nombre archivo, tamaño, hash SHA-256, tipo (estándar/LFS), resultado
+- Si ALGÚN paso falló → RECHAZAR con motivo específico del paso que falló
+
+---
+
+## FORMATO DE RESPUESTA REQUERIDO
+
+Para cada archivo evaluado, responde EXACTAMENTE en este formato:
+",Git LFS,"python, java, javascript-typescript, dark",- Prompt How,No,"FrontEnd, BackEnd, Mobile, Integraciones, DevSecOps",Pendiente,, 
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+SEG-ASVS-MIN-006,Must to have,"Autenticación
+",Seguridad,"Asegurar la identidad digital y aplicar el Principio de Menor Privilegio. Confirmar quién es el usuario y limitar su acceso estrictamente a lo permitido.
+","Exigir contraseñas >8 caracteres (ideal >15), implementar MFA (hardware para Nivel 3) y no permitir preguntas de seguridad o credenciales por defecto.","Gestión segura del ciclo de vida de credenciales, resistencia a la suplantación y uso de múltiples factores.",MFA,"python, java, javascript-typescript, dark",,No,"FrontEnd, BackEnd, Mobile, Integraciones, Arquitectura, CloudOps, DevSecOps, Calidad, Ecommerce",Pendiente,, 
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+SEG-ASVS-MIN-007,Must to have,"Gestión de sesiones
+
+",Seguridad,,"Crear tokens de alta entropía, forzar timeouts absolutos y por inactividad, e invalidar tokens al cerrar sesión.","Generación de identificadores únicos y control estricto de su ciclo de vida (inicio, inactividad, fin)",OAuth,"python, java, javascript-typescript, dark",,No,"FrontEnd, BackEnd, Mobile, Integraciones, CloudOps, Calidad",Pendiente,, 
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+SEG-ASVS-MIN-008,Must to have,"Autorización
+",Seguridad,,"Verificar permisos en cada petición (en la capa de servicio), prevenir referencias directas a objetos (IDOR) y aplicar control de acceso a campos específicos.","Controles granulares de acceso a nivel de función, datos y campos basados en permisos explícitos",FAPI,"python, java, javascript-typescript, dark",,No,"BackEnd, Mobile, Integraciones, DevSecOps, CloudOps",Pendiente,, 
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+SEG-ASVS-MIN-009,Best practice,Self‑contained Tokens,Seguridad,,"Verificar firmas digitales (sin algoritmo 'None'), validar el rango de tiempo (exp, nbf) y la audiencia (aud) para evitar reuso indebido.",Validación criptográfica de la integridad y procedencia de los datos contenidos en el token,"SAML
+
+JWT","python, java, javascript-typescript, dark",,No,"CloudOps, BackEnd, FrontEnd, Mobile, Integraciones, DevSecOps, Calidad",Pendiente,, 
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+SEG-ASVS-MIN-010,Must to have,OAuth y OIDC,Seguridad,,"Implementar PKCE para clientes públicos, validar URIs de redirección con lista blanca exacta y usar códigos de autorización de corta duración.",Protocolos seguros para la autorización delegada y federación de identidades,OAuth 2.1 / OIDC,"python, java, javascript-typescript, dark",,No,"FrontEnd, BackEnd, Mobile, Integraciones, CloudOps, Arquitectura",Pendiente,, 
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+SEG-ASVS-MIN-011,Must to have,"Criptografía
+
+",Seguridad,"Proteger la confidencialidad e integridad de los datos y la resiliencia de la infraestructura. Defensa en profundidad mediante criptografía, configuración robusta y visibilidad.","Usar cifrado autenticado (ej. AES-GCM), generadores de aleatoriedad seguros (CSPRNG) y evitar algoritmos obsoletos como MD5 o modos ECB.",Uso de algoritmos estándar validados por la industria y gestión segura del ciclo de vida de las claves.,"Cifrado de datos en reposo
+
+Cifrado en tránsito","python, java, javascript-typescript, dark",,No,"BackEnd, FrontEnd, Mobile, Integraciones, Arquitectura, CloudOps, DevSecOps, Calidad",Pendiente,, 
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+SEG-ASVS-MIN-012,Must to have,Comunicación Segura,Seguridad,,"Forzar TLS 1.2 o 1.3 con ciphers fuertes, validar certificados en clientes y cifrar el tráfico interno entre microservicios.","Cifrado de datos en tránsito entre clientes, servicios externos y componentes internos.",TLS,"python, java, javascript-typescript, dark",,No,"FrontEnd, BackEnd, Mobile, Integraciones, Arquitectura, CloudOps",Pendiente,, 
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,SSL,,,,,,,
+,,,,,,,,,,,,,,
+TRA-MIN-008,Must to have,Configuración,Seguridad,,"Almacenar secretos en bóvedas (Key Vaults/HSM), eliminar cuentas/archivos por defecto y deshabilitar modos de depuración en producción.",Endurecimiento del entorno por defecto y gestión aislada de secretos.,Secretos,"python, java, javascript-typescript, dark","""- Prompt How
+- MCP Trivy:  Tool -> scan_filesystem
+https://github.com/aquasecurity/trivy-mcp/tree/main""",No,"FrontEnd, BackEnd, Mobile, Integraciones, Arquitectura, DevSecOps, Calidad",Pendiente,, 
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+SEG-ASVS-MIN-014,Must to have,Proteccion de Datos,Seguridad,,"Enmascarar datos sensibles en logs/UI, deshabilitar caché del navegador para datos privados y cifrar datos en reposo.",Clasificación de sensibilidad y minimización de la exposición de datos.,"Clasificación y etiquetado de datos → Microsoft Purview, AWS Macie
+
+Retención y borrado seguro → Políticas de lifecycle y data retention
+
+Microsoft Sentinel, Splunk, Elastic SIEM
+
+Logging centralizado → CloudWatch, Azure Monitor
+
+Auditoría de accesos → IAM Access Analyzer
+
+Capacitación en privacidad y seguridad → Programas internos","python, java, javascript-typescript, dark",,No,"Arquitectura, CloudOps",Pendiente,, 
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+SEG-ASVS-MIN-015,Must to have,"Codificación y arquitectura seguras
+",Seguridad,,"Mantener un inventario de librerías (SBOM), actualizar componentes vulnerables y usar concurrencia segura (thread-safety).","Gestión de deuda técnica, dependencias y patrones de diseño defensivo",SCA,"python, java, javascript-typescript, dark",https://docs.google.com/spreadsheets/d/1KU9eaf-J513Y0qgsAoEbW1xVEy-smNa9aEzUn5vhRWs/edit?gid=1299292110#gid=1299292110&range=J17,No,"FrontEnd, Mobile, BackEnd, DevSecOps, Integraciones",Pendiente,, 
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+SEG-ASVS-MIN-016,Must to have,"Registro de seguridad y manejo de errores
+",Seguridad,,"Registrar eventos de éxito/fallo de autenticación y acceso, sincronizar relojes (UTC) y proteger la integridad de los logs.",Generación de trazas de auditoría de seguridad sin exponer datos sensibles,Elastic/Kibana · Grafana/Loki · Fluent Bit · Prometheus · NTP/Chrony · Wazuh/SIEM,"python, java, javascript-typescript, dark",,No,"CloudOps, DevSecOps, Arquitectura",Pendiente,, 
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+SEG-ASVS-MIN-003,Must to have,"
+Seguridad de la interfaz web",Seguridad,Proteger interfaces y protocolos específicos contra manipulación y ataques del cliente. Asegurar el punto de entrada de la aplicación y canales de comunicación en tiempo real.,"Implementar cabeceras como CSP, HSTS, X-Content-Type-Options y configurar cookies con atributos Secure, HttpOnly y SameSite.",Configuración del navegador para limitar la ejecución de contenido malicioso,WAF (ModSecurity/Cloudflare) · NGINX/Apache,"python, java, javascript-typescript, dark",,No,"FrontEnd, Arquitectura",Pendiente,, 
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+SEG-ASVS-MIN-004,Must to have,API y Web Service,Seguridad,,"Validar Content-Type, rechazar métodos HTTP no soportados y usar WSS (TLS) para todas las conexiones WebSocket.",Validación estructural de mensajes y configuración segura de protocolos modernos,CORS,"python, java, javascript-typescript, dark",,No,"FrontEnd, BackEnd",Pendiente,, 
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+SEG-ASVS-MIN-017,Best practice,"WebRTC
+",Seguridad,,"Configurar servidores TURN para filtrar IPs reservadas, usar DTLS-SRTP con cifrado fuerte y limitar la tasa de mensajes de señalización.",Protección de la infraestructura de comunicación en tiempo real contra abusos y escuchas,WebRTC (DTLS-SRTP) · OpenSSL,,,No,FrontEnd,Pendiente,, 
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+SEG-MIN-018,Must to have,Confianza,Seguridad,"- Protege la propiedad intelectual del negocio.
+- Evita que competidores copien funcionalidades clave, preservando la ventaja competitiva. ","Garantizar la seguridad, la autenticidad y la integridad de la aplicación, asegurando que provenga de una fuente confiable, protegiéndola contra modificaciones no autorizadas. Es además un requisito para su distribución en tiendas.",Firmando todo compilado modo release que apunte a producción,"Firmas y certificados: Android
+
+Firmas y certificados: iOS",dark,,No,Mobile,Pendiente,,
+SEG-MIN-019,Must to have,Reducción de riesgos y Minimo privilegio,Seguridad,"- Minimiza posibles brechas de seguridad que podrían generar pérdidas financieras, reputacionales o legales. - Asegura el cumplimiento de regulaciones y estándares de seguridad, lo que refuerza la confianza de clientes y socios.","Impedir a los usuarios la creación de accesos programáticos, como medida de seguridad para gestionar el acceso a recursos dentro de la infraestructura cloud.",Creando una política de denegación de creación de Access Key para los usuarios en infraestructura cloud,AWS IAM SCP (Deny CreateAccessKey) · Azure AD Conditional Access · GCP IAM Org Policy · Terraform/IaC,"aws, google, oracle, azure",,No,CloudOps,Pendiente,,
+,,,,,"Asegurar que los accesos a las cuentas para los usuarios root son limitados, evaluando de forma minuciosa los casos excepcionales, además de hacer uso de roles y prácticas de autenticación más seguras para dicha gestión, de tal manera que haya un control más riguroso de las acciones que se puedan realizar.",Restringiendo el uso de accesos programáticos para los usuarios root,,"azure, oracle, google, aws",,No,CloudOps,Pendiente,,
+,,,,,"Almacenar, proteger y administrar de manera segura credenciales sensibles como contraseñas, claves API y certificados. Evitando que estos datos críticos sean expuestos accidentalmente, facilitando su acceso controlado y centralizado en entornos como desarrollo, producción, operaciones, etc... ayudando a cumplir con normativas de seguridad y a reducir riesgos de brechas.",Utilizando un gestor de secretos,"Sensitive data movile
+Gestion de Secretos","azure, oracle, google, aws",,No,"Mobile, CloudOps, DevSecOps",Pendiente,,
+,,,,,"Mitigar riesgos comunes como inyecciones, fallos en la autenticación y exposición de datos sensibles. Siguiendo estas recomendaciones, se fortalece la seguridad general del software, protegiendo tanto a los usuarios como a los sistemas contra posibles ataques",Implementando cada una de las indicaciones/recomendaciones que se indican en el OWASP TOP 10 de seguridad,OWASP TOP 10,"python, java, javascript-typescript, dark","- Lista de Pipelines https://github.com/somospragma/pragma-ia-solving-with-ai/blob/main/resources/devsecops/devsecops-all-pipelines.md 
+- MCP Pragma Sast IA https://github.com/somospragma/devsecops-seguridad-codigo-mcp-py-server-stdio-sast",No,"Mobile, BackEnd, FrontEnd, Arquitectura, DevSecOps",Pendiente,,
+,,,,,"Facilitar la transmisión segura de información entre diferentes partes, permitiendo la autenticación y autorización de usuarios mediante la creación de tokens compactos y verificables, siendo firmados digitalmente, asegurando que no se puedan modificar, y siendo utilizados para acceder a recursos protegidos sin necesidad de almacenar el estado de la sesión en el servidor.",Utilizando el estándar JWT para la generación de token,Ruta de Aprendizaje: JWT (JSON Web Token),"python, java, javascript-typescript, dark",,No,"BackEnd, Mobile, FrontEnd, Arquitectura",Pendiente,,
+TRA-MIN-024,Must to have,CI/CD,Seguridad,"Gestión de vulnerabilidades
+Inspección continua de artefactos
+Evitar la exposición de componentes comprometidos con vulnerabilidades explotadas de librerías u otros artefactos
+Segregar el acceso al código y a la compilación del mismo.
+Establecer una cadena de responsabilidad en la distribución del código.","Proteger las apis contra amenazas comunes como inyección, exposición de datos sensibles y control de acceso deficiente. Siguiendo estas recomendaciones, se mejora la seguridad, la integridad y la confidencialidad de las aplicaciones, reduciendo riesgos y aumentando la confianza del usuario.",Implementando cada una de las indicaciones/recomendaciones que se indican en el OWASP TOP 10 para APIs,OWASP API Security Project,"python, java, javascript-typescript, dark",,No,"Arquitectura, Mobile, BackEnd, FrontEnd, Integraciones, CloudOps",Pendiente,,
+,,,,,"Mejorar la seguridad en el flujo de integración y entrega continua, abordando vulnerabilidades comunes desde las primeras etapas del desarrollo. Asegurando que el código y las aplicaciones estén protegidas contra riesgos como inyecciones, exposición de datos y configuraciones inseguras, mejorando la seguridad y reduciendo posibles fallos a lo largo del ciclo de vida del software.",Implementando cada una de las indicaciones/recomendaciones que se indican en el OWASP TOP 10 para CI/CD,OWASP TOP 10 CI/CD ,"azure, oracle, google, aws, javascript-typescript, java, python, terraform, dark","- Lista de Pipelines https://github.com/somospragma/pragma-ia-solving-with-ai/blob/main/resources/devsecops/devsecops-all-pipelines.md 
+- MCP Pragma Sast IA https://github.com/somospragma/devsecops-seguridad-codigo-mcp-py-server-stdio-sast",No,"DevSecOps, Arquitectura",Pendiente,,

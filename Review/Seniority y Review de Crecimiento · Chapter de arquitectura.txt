@@ -1,0 +1,435 @@
+Chapter de arquitectura
+Seniority en arquitectura
+Los requisitos para crecer de Junior a Master y el proceso del review de crecimiento.
+23 de octubre de 2026
+Keep moving
+Objetivo de la charla: que cada arquitecto sepa qué necesita para subir de nivel y cómo es el proceso para demostrarlo en su review.
+1
+
+Agenda
+Lo que vamos a ver hoy
+01
+El arquitecto integral
+Las ocho dimensiones que se revisan.
+02
+Niveles y requisitos
+Qué pide cada nivel y qué necesitas para subir.
+03
+El review de crecimiento
+Los nueve pasos, sus reglas claras y tus recursos.
+Seniority · Chapter de arquitectura
+2
+2
+
+Arquitecto Integral
+Tu crecimiento se revisa en ocho dimensiones
+El arquitecto de soluciones conecta los objetivos del cliente con la tecnología y transforma necesidades en valor tangible.
+01
+Experiencia
+Años en el rol, que crecen con cada nivel.
+02
+Solving Pragmapowers
+Cómo resuelves en la cuenta: compromiso, calidad y autonomía.
+03
+Misiones en el reto
+Lo que entregas en el proyecto según tu nivel.
+04
+Nuevo
+Proyectos exitosos
+Retos que resolviste con éxito y de forma rentable.
+05
+Team Pragmapowers
+Comunicación y liderazgo, con un puntaje mínimo por nivel.
+06
+Technical Pragmapowers
+Capacidades técnicas demostradas con evidencias y SOPP.
+07
+Nuevo
+Certificaciones
+La que obtienes en tu nivel se pide para subir, y debe estar vigente.
+08
+Cambia
+Logros
+Tu aporte a la comunidad. Ahora se piden por seniority.
+Todas se revisan en tu review · Son acumulables: cada nivel suma a lo que exige el anterior
+3
+El arquitecto integral no se mide solo por lo técnico. Cómo resuelve en la cuenta, lo que entrega, sus proyectos exitosos, sus comportamientos, sus capacidades técnicas, sus certificaciones vigentes y su aporte a la comunidad se revisan en el review y funcionan como requisitos para subir de nivel.
+3
+
+Niveles y requisitos
+Lo que pide cada nivel para crecer
+Requisito
+Junior
+Advanced
+Senior
+Master
+Enfoque
+Constructor estratégico
+Facilitador estratégico
+Estratega técnico
+Rol transversal de Pragma
+Experiencia
+1 a 3 años
+3 a 5 años
+5+ años
+8+ años, 5+ en Pragma
+Proyectos exitosos
+1 o más
+2 o más
+4 o más
+6 o más
+Certificación vigente del nivel, para subir
+Associate en AWS o Azure
+Profesional en AWS o Azure
+Profesional o Specialty en AWS y Azure
+Specialty en AWS y Azure
+Team PP del nivel, para subir
+3,5 en No trago entero y Pilotos de nuestro destino
+4 en Comunicación efectiva
+4 en cada uno
+4,5 en cada uno
+4,8 en cada uno
+Puntos en logros, para agendar
+100
+200
+300
+400
+Proyecto exitoso: la solución resolvió el problema del cliente de forma rentable para Pragma
+Subniveles por comportamientos listos
+L1 25%
+L2 50%
+L3 75%
+Para subir
+100% de tu nivel y 25% del siguiente, es decir, cumplir el L1 del siguiente nivel
+Techo
+Master L3, 100% en 4 o 5
+Para todos: SOPP en cada comportamiento · charla o mentoría para pasar al siguiente L · Master suma cinco condiciones
+4
+Una sola tabla con todos los requisitos. Para subir, cumples la columna del nivel siguiente, salvo la certificación y los Team Pragmapowers: esos los logras durante tu nivel actual y son los que se piden para subir. La certificación debe estar vigente: una vencida no cuenta. Dentro de cada nivel, el L depende del porcentaje de comportamientos listos: 25% para L1, 50% para L2 y 75% para L3. Para cambiar de seniority necesitas el 100% de los comportamientos de tu nivel y además el 25% del siguiente, es decir, llegar asegurando el L1 del nuevo nivel. Master L3 es el techo y una excepción a la regla del 75%: pide el 100% de los comportamientos en 4 o 5 y los Team Pragmapowers en 4,8 o superior. Los puntos en logros son los de tu nivel actual y son requisito para agendar el review; se reinician en 0 después de cada review. Los Technical Pragmapowers y las misiones de cada nivel están en el mapa de crecimiento en Creci.
+4
+
+Nivel 1 · 1 a 3 años de experiencia
+Arquitecto/a de soluciones Junior
+Constructor estratégico y líder emergente
+Decide con criterios objetivos y equilibra metas de negocio con excelencia técnica
+Promueve la reutilización, la calidad del código y las prácticas seguras
+Orienta a su equipo y se alinea con las necesidades del cliente
+Para pasar a Advanced
+100% de Junior y llegar a Advanced L1
+3 a 5 años de experiencia
+2 o más proyectos exitosos
+Certificación Associate vigente
+Team PP: 3,5 · Comunicación efectiva 4
+Todos los requisitos por nivel están en la escalera.
+Seniority · Chapter de arquitectura
+5
+Valor diferencial oficial: El arquitecto de soluciones Junior es un constructor estratégico de software y líder emergente que equilibra el cumplimiento de metas de negocio con la excelencia técnica. Con enfoque en decisiones objetivas, promueve la reutilización de componentes, la calidad del código y la implementación de prácticas ágiles y seguras. Acompaña a su equipo con orientación clara y precisa, al tiempo que asegura la alineación técnica con las necesidades del cliente. Actualiza constantemente sus conocimientos, lidera con actitud positiva y fomenta una colaboración efectiva para garantizar entregables que impacten positivamente el éxito de los proyectos y el crecimiento del equipo.
+5
+
+Nivel 2 · 3 a 5 años de experiencia
+Arquitecto/a de soluciones Advanced
+Facilitador estratégico con liderazgo colaborativo
+Analiza necesidades y define arquitecturas robustas
+Guía al equipo en patrones, principios y metodologías modernas
+Gestiona riesgos, resuelve impedimentos y alinea expectativas
+Para pasar a Senior
+100% de Advanced y llegar a Senior L1
+5+ años de experiencia
+4 o más proyectos exitosos
+Certificación Profesional vigente en AWS o Azure
+4 en cada Team PP
+Todos los requisitos por nivel están en la escalera.
+Seniority · Chapter de arquitectura
+6
+Valor diferencial oficial: El arquitecto de soluciones Advanced es un facilitador estratégico en la construcción de aplicaciones y soluciones, combinando un enfoque técnico sólido con un liderazgo colaborativo. Analiza necesidades, define arquitecturas robustas y toma decisiones objetivas que maximizan recursos y garantizan el cumplimiento de los objetivos del cliente. Promueve estándares de calidad, reutilización de componentes y prácticas seguras, mientras guía al equipo en la adopción de patrones, principios y metodologías modernas. Su habilidad para gestionar riesgos, resolver impedimentos y alinear expectativas asegura el éxito de los proyectos, fomentando un entorno de aprendizaje continuo, innovación tecnológica y entrega de soluciones de alto impacto.
+6
+
+Nivel 3 · 5+ años de experiencia
+Arquitecto/a de soluciones Senior
+Estratega técnico, puente entre negocio y tecnología
+Alinea equipos y clientes hacia un objetivo común
+Diseña soluciones robustas y escalables con criterios objetivos
+Promueve la cultura DevSecOps y mentoriza equipos de alto desempeño
+Para pasar a Master
+100% de Senior y llegar a Master L1
+8+ años, 5+ en Pragma
+6 o más proyectos exitosos
+Certificación Profesional o Specialty vigente en AWS y Azure
+4,5 en cada Team PP
+Además, las cinco condiciones de Master.
+Desde Senior L3
+Puedes ser parte de la red de valoradores y habilitar a otros arquitectos.
+Seniority · Chapter de arquitectura
+7
+Valor diferencial oficial: El arquitecto de soluciones Senior es el estratega técnico y puente clave entre negocio y tecnología, capaz de abstraer y comunicar el conocimiento de manera asertiva para alinear equipos y clientes hacia un objetivo común. Diseña soluciones robustas y escalables, tomando decisiones basadas en criterios objetivos que maximizan recursos y garantizan el cumplimiento de metas de negocio. Con liderazgo visionario, promueve estándares de calidad, innovación tecnológica y cultura DevSecOps, asegurando la entrega de valor sostenible. Su enfoque en la colaboración y la mentoría inspira equipos de alto desempeño mientras gestiona riesgos y fomenta relaciones de confianza que impulsan la transformación digital y el éxito estratégico de los proyectos. Desde Senior L3 puedes entrar a la red de valoradores, que además es una de las condiciones para llegar a Master.
+7
+
+Nivel 4 · 8+ años de experiencia
+Arquitecto/a de soluciones Master
+Rol transversal: resuelve cualquier reto de arquitectura en Pragma
+Resuelve cualquier problema de arquitectura, en cualquier cuenta
+Conoce a fondo la organización y conversa de negocio con stakeholders de alto nivel
+Está donde más aporta: preventa, proyectos o innovación
+El camino a Master exige además
+Más de 5 años como arquitecto en Pragma
+Experiencia comercial en territorio o triunvirato
+6 o más proyectos exitosos en Pragma
+Ser parte de la red de valoradores, abierta desde Senior L3
+Aportar de forma constante a la potencia Pragma
+El techo: Para subir a Master L3
+El 100% de los comportamientos en 4 o 5 y los Team PP en 4,8 o más.
+Seniority · Chapter de arquitectura
+8
+Master es un rol transversal en Pragma: resuelve cualquier problema de arquitectura, conoce a fondo la organización y puede estar en preventa, proyectos o innovación, aportando de forma constante a la potencia Pragma. Master L3 es el techo de la carrera: para llegar ahí, el 100% del mapa de comportamientos debe estar en 4 o 5, a diferencia del 75% que pide L3 en los otros niveles, y los Team Pragmapowers en 4,8 o superior. Valor diferencial propuesto: El arquitecto de soluciones Master es el consultor estratégico y referente de arquitectura que conecta la visión del negocio con la tecnología de punta a punta. Con dominio de la arquitectura empresarial, el gobierno de TI y la gestión de riesgos, diagnostica, diseña y gobierna arquitecturas desde cero, y sostiene conversaciones de valor con stakeholders de alto nivel. Diseña plataformas multirregión y multinube elásticas, resilientes, seguras y costo eficientes, y lidera el Journey to Cloud de sus clientes. Integra la inteligencia artificial y los datos en el diseño, la seguridad, la observabilidad y DevSecOps, mientras eleva la práctica del chapter y forma a otros arquitectos.
+8
+
+Review de crecimiento
+Crecer en Pragma tiene tres propósitos
+01
+Crecer entre niveles de seniority
+02
+Adquirir habilidades de comunicación y liderazgo
+03
+Crecer salarialmente
+Tu mapa de crecimiento vive en Creci: chapter, especialidad, nivel actual y fecha sugerida de tu próximo review.
+Seniority · Chapter de arquitectura
+9
+Abre la sección del review de crecimiento. En Creci cada pragmático ve su perfil, su chapter primario y la fecha sugerida del próximo review.
+9
+
+El proceso completo
+Nueve pasos de tu review de crecimiento
+01
+Solving
+Tu líder te valora en SAP cada 3 meses
+02
+Team PP
+Te autovaloras en Bitácora
+03
+Socialización
+Tu líder te valora y lo conversan, un mes antes
+04
+Autovaloración
+Technical PP
+Nuevo: autovalora los comportamientos con 3 o menos
+05
+Logros
+Registras tus logros en Creci: requisito para agendar
+06
+Agenda
+Te autoagendas en Creci tras el correo de aviso
+07
+Assessment
+Sesión con tu valorador, con evidencias
+08
+Calibración
+Valorador y líder acuerdan y aprueban
+09
+Resultado
+Te llega por correo con recomendaciones
+Cada 6 meses
+Solving, cada 3 meses
+Pasos 1 a 3: informativos, sin acción en Creci · Sigue tu avance en Creci › Gestión de crecimiento
+10
+Vista completa del review. Las slides siguientes explican cada paso. Los pasos 1 a 3 no tienen acciones en Creci pero son clave. El paso 4 es nuevo: lo vamos a incorporar en el chapter de arquitectura. El agendamiento es siempre autoagendamiento en Creci.
+10
+
+Paso 1 · Solving Pragmapowers
+Tu líder valora cómo resuelves en la cuenta
+Qué es
+Tu valoración en el equipo de trabajo: compromiso, calidad, autonomía y aporte para el cliente.
+Herramienta
+SAP
+Frecuencia
+Cada 3 meses
+1
+El líder de equipo activa el formulario desde SAP.
+2
+Haces tu autoevaluación antes de socializar con tu líder.
+3
+Tienes un espacio de feedback con tu líder sobre tu desempeño en la cuenta.
+Seniority · Chapter de arquitectura
+11
+El formulario evalúa competencias como planificación, cumplimiento de entregables, interacción con el equipo, actitud y resultado en el cliente.
+11
+
+Pasos 2 y 3 · Team Pragmapowers · Bitácora · Cada 6 meses
+Te autovaloras y lo conversas con tu líder
+1
+Te autovaloras en Bitácora en No trago entero, Comunicación efectiva y Pilotos de nuestro destino.
+2
+Pide a tu líder de equipo la valoración un mes antes y socialízala a más tardar dos semanas antes.
+3
+Llega con todo: sin valoración del líder tu puntaje baja a 1 o 2.
+Nivel
+No trago entero
+Comunicación efectiva
+Pilotos de nuestro destino
+Junior
+3,5
+4
+3,5
+Advanced
+4
+4
+4
+Senior
+4,5
+4,5
+4,5
+Master
+4,8
+4,8
+4,8
+En el assessment: 4 si cumples el mínimo, 3 si estás por debajo y 5 solo si tu líder te calificó en 5.
+Fuente: Guía de valoradores · El assessment no se aplaza por no tener Team Pragmapowers
+12
+Escala completa: 1 si llegas sin autovaloración ni valoración; 2 si llegas solo con autovaloración; 3 si la valoración está por debajo del mínimo de tu nivel; 4 si cumple o supera el mínimo; 5 si eres referente y tu líder te calificó en 5. Los resultados suman puntuación en el assessment.
+12
+
+Paso 4 · Nuevo: lo incorporamos en el chapter · Technical Pragmapowers · Creci
+Llega la autovaloración técnica
+1
+Revisa en Creci las brechas de tu último assessment.
+2
+El uso de SOPP es obligatorio: demuéstralo en cada comportamiento que aplique.
+3
+Autoevalúa cada comportamiento con puntaje menor o igual a 3 antes del assessment.
+4
+Comparte los enlaces de tus evidencias y envía con Terminar autovaloración.
+Nuevo requisito
+SOPP
+Sistema Operativo de Potencia Pragma: herramientas de IA para potenciar al arquitecto.
+Desde arquitectura
+MCP de Arquitectura
+Se exige su uso en cada comportamiento que aplique.
+Seniority · Chapter de arquitectura
+13
+Paso nuevo que vamos a incorporar en el chapter de arquitectura. Se hace en Creci, cada 6 meses. El requisito es usar SOPP para resolver los comportamientos de los Technical Pragmapowers. La escala y las evidencias que pide el valorador están en la siguiente slide.
+13
+
+Paso 4 · Escala de autovaloración y evidencias
+Cada puntaje técnico exige una evidencia
+Puntaje
+Qué significa
+Cómo se valida
+1 · Deficiencia
+No lo ha oído o no lo ha usado
+—
+2 · Explora
+Conoce la teoría, sin práctica
+Preguntas y respuestas sobre el comportamiento
+3 · Experimenta
+Hace laboratorios o lo usa esporádicamente, o hace ya mucho tiempo no lo usa (está desactualizado)
+Evidencias de laboratorios o explicación clara de cómo hacerlo, o experiencias de años atrás.
+4 · Implementa
+Lo implementó y tiene buen dominio
+SAD, decisiones formales, frameworks y artefactos en producción. Uso de SOPP donde aplique. Mínimo 1 año
+5 · Domina
+Habilita a otros: es referente
+Demuestra maestría en el comportamiento. Mínimo 3 años
+0 · Pendiente por valorar · Autovalórate con lo que puedes demostrar · Fuente: Guía de valoradores
+14
+Es la misma escala de 0 a 5 de la autovaloración técnica, con la evidencia que pide el valorador. El 0 es pendiente por valorar. Autovalórate con lo que puedes demostrar.
+14
+
+Categorías: Aumentar la potencia de Pragma · Compartir conocimiento · Cooperación · #BuenaCompañía
+15
+Paso 5 · Logros · Cada 6 meses en Creci
+Tus logros fortalecen la red de Pragma
+1
+Elige tu tipo de logro: una charla, un artículo, un proceso documentado, una idea ejecutada o un aprendizaje que transforma.
+2
+Carga las evidencias de tus logros en Creci.
+3
+El líder de chapter los aprueba si cumplen los requisitos mínimos.
+4
+Creci verifica tus puntos según tu seniority: son requisito para agendar tu review.
+Obligatorio · Todos los niveles
+Una charla en el chapter o una mentoría a otro arquitecto
+Se revisa en cada review y es condición para pasar al siguiente L.
+Además, los puntos necesarios de tu seniority para agendar son:
+Junior 100
+Advanced 200
+Senior 300
+Master 400
+No se acumulan
+Tus puntos vuelven a 0 después de cada review, subas o no de nivel.
+Requisito del chapter de arquitectura para todos los niveles: en cada review se revisa si diste una charla en el chapter o mentoreaste a otro arquitecto. Es condición para pasar al siguiente subnivel L. Los logros son acciones que fortalecen la red de aprendizaje, conocimiento y cooperación de Pragma. Un logro convierte tu experiencia en conocimiento explícito o comparte conocimiento tácito: es la materialización de la buena compañía. Puntos por seniority: Junior 100, Advanced 200, Senior 300 y Master 400. Desde el 1 de julio, Creci verifica que tengas los puntos de tu seniority para dejarte agendar el review. Los logros no se acumulan: se reinician en 0 después de cada review, aunque no subas de nivel. No son un trámite. Más detalle en pragma.co/logros-pragmaticos.
+15
+
+Paso 6 · Autoagendamiento del assessment
+Tú agendas tu propio assessment
+Te avisamos
+2 meses antes
+Con un correo de Creci: “Comienza tu proceso de assessment en Creci”.
+Frecuencia
+Cada 6 meses
+1
+Recibes el correo de Creci con fechas clave y pasos a seguir.
+2
+Te autoagendas según la fecha propuesta en tu perfil.
+3
+En Creci eliges valorador, fecha y hora antes de la fecha límite y añades a tu líder.
+4
+Llega la confirmación con fecha, hora y participantes. ¡Prepárate!
+Apóyate en el manual para gestión del crecimiento y el video tutorial de autoagendamiento
+16
+El correo de Creci resume todos los pasos y la fecha límite para tener todo listo antes de la reunión.
+16
+
+Paso 7 · Reglas claras · Antes del assessment
+Llega al assessment con evidencias
+Tus evidencias
+Muchas ya las tienes
+Son las que cargaste en tu autovaloración técnica del paso 4: úsalas como base.
+Evidencias del cierre de brechas del assessment anterior
+Si no puedes mostrar las del cliente, lleva pantallazos o el SAD de Pragma
+Lo que te preguntarán
+Cuánto tiempo llevas en el proyecto actual
+Cómo cerraste tus brechas, con evidencias del proyecto
+Quiénes fueron tus líderes en los últimos 6 meses
+Si conoces el proceso de solución de problemas y el instructivo de diseño arquitectónico
+Reglas de la sesión
+No se aplaza si no tienes tus Team Pragmapowers
+La sesión se graba con toma de notas de Gemini
+Valoran arquitectos Senior L3 o Master habilitados
+Fuente: Guía de valoradores · Arquitectura de soluciones
+17
+Muchas evidencias ya las tienes desde la autovaloración técnica del paso 4: los enlaces que compartiste en Creci son la base para el assessment. El valorador calibra con tu líder actual y con quien hizo tus Team Pragmapowers. Para ser valorador: 3 assessments en shadow, 3 supervisados y luego assessments periódicos, con un logro por cada cinco.
+17
+
+Pasos 7 a 9 · Assessment, calibración y resultado
+El assessment define tu nivel de seniority
+01
+Sesión
+Conversas con tu valorador sobre el conocimiento técnico que aplicaste.
+02
+Brechas
+Muestras con evidencias cómo cerraste las brechas técnicas.
+03
+Calibración
+Tu valorador acuerda tu crecimiento con tu líder de equipo.
+04
+Aprobación
+Tu líder revisa en Creci, aprueba o pide ajustes.
+05
+Resultado
+Te llega por correo tu nivel con recomendaciones.
+En Creci, un panel te muestra en tiempo real el estado de tu review: enviar a aprobación, aprobación y envío del resultado.
+Seniority · Chapter de arquitectura
+18
+La calibración dura de 15 a 30 minutos: valorador y líder validan cómo resuelves en la cuenta y tus habilidades blandas para tu seniority. El correo trae recomendaciones del valorador y del líder. Aprovéchalo para definir tus próximos pasos.
+18
+
+Saber más para resolver mejor
+Tus recursos
+Creci · Bitácora · SAP
+Catálogo de roles de arquitectura
+Manual de gestión del crecimiento
+Video tutorial de autoagendamiento
+Tu siguiente paso
+Revisa en Creci la fecha sugerida de tu próximo review
+¿Dudas? Escríbele al chapter de arquitectura o conversa con tu líder.
+Keep moving
+19
